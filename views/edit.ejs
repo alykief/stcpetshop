@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+    <h1>Edit Your Pet Choice</h1>
+    <form action="/pets/<%pets.id;%>?_method=PUT" method="POST">
+      Species: <input type="text" name="species" /></br>
+      Breed: <input type="text" name="breed" /></br>
+      Photo: <input type="text" name="img" /></br>
+      Ready To Go Home?: <type="checkbox" name="readyToGo"
+        <% if(pet.readyToGo === true)
+          { %>
+            Checked
+            <% } %>
+      /></br>
+      Price: <input type="number" name="price" /></br>
+      Qty: <input type="number" name="qty" /></br>
+      Rating: <input type="radio" name="rating" value="1">*< /br>
+      <input type="radio" name="rating" value="2" checked>**< /br>
+      <input type="radio" name="rating" value="3" checked>***< /br>
+      <input type="radio" name="rating" value="4" checked>****< /br>
+      <input type="radio" name="rating" value="5" checked>*****< /br>
+      <input type="submit" name="" value="Submit Changes" />
+    </form>
+  </body>
+</html>

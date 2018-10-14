@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+    <h1>Puppies & Kittens & Lizards..OH MY!</h1>
+    <ul>
+      <% for(let i=0; i < pets.length; i++) { %>
+        <li>
+          There are <%=pets[i].qty%> <a href="/pets/<%pets[i].id;%>"><%=pets[i].breed;%><a> <%=pets[i].species%> that cost <%=pets[i].price%>. The care rating is <%=pets[i].rating%>. <% if(pets[i].readyToGo === true) { %>
+          This pet is available to come home with you today!
+          <% } else { %>
+            There is a waiting period before this animal can head home!
+            <% } %>
+            <form action="/pets/<%=pets[i].id;%>?_method=DELETE" method="POST">
+              <input type="submit" value="Delete" />
+            </form>
+            <a href="/pets/<%=pets[i].id;%>/edit">Edit Your Pet Choice</a>
+        </li>
+      <% } %>
+    </ul>
+    <nav>
+      <a href="/pets/new">Want a New Pet?</a>
+    </nav>
+
+  </body>
+</html>
