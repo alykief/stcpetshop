@@ -5,7 +5,7 @@ const petSchema = mongoose.Schema({
   species: { type: String, required: true },
   breed: String,
   img: String,
-  readyToGoHome: Boolean,
+  readyToGo: Boolean,
   price: { type: Number, default: 0 },
   qty: { type: Number, default: 0 },
   rating: Number

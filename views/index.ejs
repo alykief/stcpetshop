@@ -1,28 +1,29 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
   <head>
-    <meta charset="utf-8">
-    <title></title>
+    <% include ./partials/head.ejs %>
   </head>
   <body>
+    <header>
+    </header>
     <h1>Puppies & Kittens & Lizards..OH MY!</h1>
     <ul>
       <% for(let i=0; i < pets.length; i++) { %>
         <li>
-          There are <%=pets[i].qty%> <a href="/pets/<%pets[i].id;%>"><%=pets[i].breed;%><a> <%=pets[i].species%> that cost <%=pets[i].price%>. The care rating is <%=pets[i].rating%>. <% if(pets[i].readyToGo === true) { %>
+          There are <%=pets[i].qty%> <a href="/pets/<%=pets[i].id%>"><%=pets[i].breed%></a> <%=pets[i].species%> that cost <%=pets[i].price%>. The care rating is <%=pets[i].rating%>. <% if(pets[i].readyToGo === true) { %>
           This pet is available to come home with you today!
           <% } else { %>
             There is a waiting period before this animal can head home!
             <% } %>
-            <form action="/pets/<%=pets[i].id;%>?_method=DELETE" method="POST">
-              <input type="submit" value="Delete" />
+            <form action="/pets/<%=pets[i].id%>?_method=DELETE" method="POST">
+              <input type="submit" value="DELETE"/>
             </form>
-            <a href="/pets/<%=pets[i].id;%>/edit">Edit Your Pet Choice</a>
+            <a href="/pets/<%=pets[i].id%>/edit">Edit Your Pet Choice</a>
         </li>
       <% } %>
     </ul>
     <nav>
-      <a href="/pets/new">Want a New Pet?</a>
+    <% include ./partials/nav.ejs %>
     </nav>
 
   </body>

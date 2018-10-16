@@ -1,10 +1,11 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
   <head>
-    <meta charset="utf-8">
-    <title></title>
+    <% include ./partials/head.ejs %>
   </head>
   <body>
+    <header>
+    </header>
     <h1>So..You Want a Different Pet?</h1>
     <form action="/pets" method="POST">
       Species: <input type="text" name="species" /></br>
@@ -20,5 +21,8 @@
       <input type="radio" name="rating" value="5">*****</br>
       <input type="submit" name="" value="Submit New Pet Request" />
     </form>
+    <nav>
+      <% include ./partials/head.ejs %>
+    </nav>
   </body>
 </html>

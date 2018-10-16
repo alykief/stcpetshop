@@ -1,23 +1,25 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
   <head>
-    <meta charset="utf-8">
-    <title></title>
+    <% include ./partials/head.ejs %>
   </head>
   <body>
+    <header>
+      <img src="./public/images/logo.jpg" alt="logo"/>
+    </header>
     <h1>Your Future Pet</h1>
-    <h2><%pets[i].species%></h2>
+    <h2><%=pets.species%></h2>
       </br>
-    <%pets[i].img%>
+    <img src="<%=pets.img%>"/>
       </br>
-    There are <%pets[i].qty%> <%=pets[i].breed%> that cost <%pets[i].price%> each. To help with choosing if this pet is right for you, please view the rating. All animals are rated on a care scale, 1 being the easiest level of care (perfect for first time pet owners) and 5 being an advanced level of care. This pet is rated a <%=pets[i].rating%>.
-    <% if(pets[i].readyToGo === true) { %>
-      These <%=pets[i].species%> are ready to go home!
+    There are <%=pets.qty%> <%=pets.breed%> <%=pets.species%> that cost <%=pets.price%> each. To help with choosing if this pet is right for you, please view the rating. All animals are rated on a care scale, 1 being the easiest level of care (perfect for first time pet owners) and 5 being an advanced level of care. This pet is rated a <%=pets.rating%>.
+    <% if(pets.readyToGo === true) { %>
+      These <%=pets.species%> are ready to go home!
       <% } else { %>
-        These <%=pets[i].species%> have a waiting period before they are ready to go home!
+        These <%=pets.species%> have a waiting period before they are ready to go home!
         <% } %>
     <nav>
-      <a href="/pets">Home</a>
+      <% include ./partials/head.ejs %>
     </nav>
   </body>
 </html>

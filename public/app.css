@@ -1,0 +1,61 @@
+header {
+  background-image: url("./logo.jpg");
+  background-color: white;
+  align-content: center;
+  width: 200px;
+  height: auto;
+}
+
+ body {
+   background-color: #CECCCC;
+   text-align: center;
+   color: #536E93;
+ }
+
+h1 {
+  font-size: 24px;
+  text-align: center;
+  color: #536E93;
+}
+
+h2 {
+  font-size: 20px;
+  color: #C58ED5;
+  text-align: center;
+}
+
+body {
+  font-size: 16px;
+  text-align: center;
+}
+
+ul {
+  font-size: 16px;
+}
+
+nav {
+  font-size: 16px;
+  float: right;
+  display: inline-block;
+  width: 25px;
+}
+
+a:hover {
+  color: #C58ED5;
+  text-decoration: none;
+}
+
+a:active {
+   color: #536E93;
+   text-decoration: underline;
+}
+
+a:link {
+  color: #536E93;
+  text-decoration: underline;
+}
+
+a:visited{
+  color: #C58ED5;
+  text-decoration: none;
+}

@@ -8,12 +8,14 @@ const db = mongoose.connection;
 //Allow use of Heroku's port or local Port
 const PORT = process.env.PORT || 3000
 //Database
-const MONGODB_URI = process.env.MONGODB_URI || 'mongodb://localhost/' + 'stcpetshop'
+const MONGODB_URI = 'mongodb://localhost:27017/' + 'stcpetshop' || 'mongodb://heroku_k16n9j0c:v6bvuv1snvg7btdr8o21dhq7tg@ds129393.mlab.com:29393/heroku_k16n9j0c' || process.env.MONGODB_URI;
 //Require petSchema
 const Pet = require('./models/pets.js');
 
 //Connect to Mongo
-mongoose.connect(MONGODB_URI, { useNewUrlParser: true })
+mongoose.connect(MONGODB_URI, {
+  useNewUrlParser: true
+})
 
 // Error / success
 db.on('error', (err) => console.log(err.message + ' is Mongod not running?'));
@@ -21,82 +23,159 @@ db.on('connected', () => console.log('Mongo connected: ', MONGODB_URI));
 db.on('Disconnected', () => console.log('Mongo disconnected'));
 
 //Open connection to Mongo
-db.on('open', ()=>{});
+db.on('open', () => {});
 
 //Middleware
 //Use public folder for static assests (CSS)
 
-//Populated req.body with parsed info from forms, if no data, return empty
-app.use(express.urlencoded({ extended: false}));
-
 //Method Override
 //PUT and DELETE + GET and POST
 app.use(methodOverride('_method'));
+//Populated req.body with parsed info from forms, if no data, return empty
+app.use(express.urlencoded({
+  extended: false
+}));
+//Static
+app.use(express.static('public'));
 
 //Routes
+app.get('/', (req, res) => {
+  res.send('Welcome to STC Pet Shop');
+});
 //Link INDEX
-app.get('/pets', (req, res)=>{
-  Pet.find({}, (err, allPets)=>{
+app.get('/pets', (req, res) => {
+  Pet.find({}, (err, allPets) => {
     res.render('index.ejs', {
       pets: allPets
     });
   });
 });
 
+//Seed
+app.get('/pets/seed', (req, res) => {
+  Pet.create([
+    {
+      species: 'Dogs',
+      breed: 'Chihuahua',
+      img: './images/chihuahuas.jpg',
+      readyToGo: true,
+      price: 1200,
+      qty: 5,
+      rating: 4
+    }, {
+      species: 'Amphibians',
+      breed: 'Blue Poison Dart Frog',
+      img: './images/bluepoisondartfrogs.jpg',
+      readyToGo: true,
+      price: 55,
+      qty: 8,
+      rating: 3
+    }, {
+      species: 'Dogs',
+      breed: 'Golden Retriever',
+      img: './images/goldenretrievers.jpg',
+      readyToGo: false,
+      price: 2500,
+      qty: 4,
+      rating: 4
+    }, {
+      species: 'Reptiles',
+      breed: 'Bearded Dragon',
+      img: './images/beardeddragons.jpg',
+      readyToGo: true,
+      price: 80,
+      qty: 2,
+      rating: 2
+    }, {
+      species: 'Cats',
+      breed: 'Maine Coon',
+      img: './images/mainecoons.jpg',
+      readyToGo: true,
+      price: 1500,
+      qty: 5,
+      rating: 4
+    },
+    {
+      species: 'Reptiles',
+      breed: 'Veiled Chameleon',
+      img: './images/veiledchameleons.jpg',
+      readyToGo: false,
+      price: 200,
+      qty: 2,
+      rating: 5
+    },
+    {
+      species: 'Dogs',
+      breed: 'Bullmastiff',
+      img: './images/bullmastiffs.jpg',
+      readyToGo: true,
+      price: 3500,
+      qty: 12,
+      rating: 4
+    }
+  ], (err, data)=>{
+    res.redirect('/pets');
+  });
+});
+
 //Link NEW
-app.get('/pets/new', (req, res)=>{
+app.get('/pets/new', (req, res) => {
   res.render('new.ejs');
 });
 
 //Link SHOW
-app.get('/pets/:id', (req, res)=>{
-  Pet.findById(req.params.id, (err, foundPet)=>{
+app.get('/pets/:id', (req, res) => {
+  Pet.findById(req.params.id, (err, foundPet) => {
     res.render('show.ejs', {
-      pet: foundPet
+      pets: foundPet
     });
   });
 });
 
 //Link EDIT
-app.get('/pets/:id/edit', (req,res)=>{
-  Pet.findById(req.params.id, (err, foundPet)=>{
+app.get('/pets/:id/edit', (req, res) => {
+  Pet.findById(req.params.id, (err, foundPet) => {
     res.render('edit.ejs', {
-      pet: foundPet
+      pets: foundPet
     });
   });
 });
 
 //Define PUT
-app.put('/pets/:id', (req, res)=>{
-  if (req.body.readyToGo === 'on'){
+app.put('/pets/:id', (req, res) => {
+  if (req.body.readyToGo === 'on') {
     req.body.readyToGo = true;
   } else {
     req.body.readyToGo = false;
   }
-  Pet.findByIdAndUpdate(req.params.id, req.body, { new: true }, (err, updatePet)=>{
+  Pet.findByIdAndUpdate(req.params.id, req.body, {
+    new: true
+  }, (err, updatePet) => {
     res.redirect('/pets/:id');
   });
 });
 
 //Define POST
-app.post('/pets', (req, res)=>{
-  if (req.body.readyToGo === 'on'){
+app.post('/pets', (req, res) => {
+  if (req.body.readyToGo === 'on') {
     req.body.readyToGo = true;
   } else {
-  req.body.readyToGo = false;
-}
-///Send created pet to array
-  Pet.create(req.body, (err, createdPet)=>{
+    req.body.readyToGo = false;
+  }
+  ///Send created pet to array
+  Pet.create(req.body, (err, createdPet) => {
     res.redirect('/pets');
   });
 });
 
 //Define DELETE
-app.delete('pets/:id', (req, res)=>{
-  res.redirect('/pets');
+app.delete('/pets/:id', (req, res) => {
+  Pet.findByIdAndRemove(req.params.id, (err, data)=>{
+    res.redirect('/pets');
+  });
 });
 
 //Listener
-app.listen(PORT, ()=>{
+app.listen(PORT, () => {
   console.log('Listening');
 })
