@@ -5,12 +5,15 @@
   </head>
   <body>
     <header>
+      <img class="logo" src="/images/logo.jpg" alt="logo"/>
     </header>
-    <h1>Puppies & Kittens & Lizards..OH MY!</h1>
+    <h1>Available Pets</h1>
     <ul>
       <% for(let i=0; i < pets.length; i++) { %>
         <li>
-          There are <%=pets[i].qty%> <a href="/pets/<%=pets[i].id%>"><%=pets[i].breed%></a> <%=pets[i].species%> that cost <%=pets[i].price%>. The care rating is <%=pets[i].rating%>. <% if(pets[i].readyToGo === true) { %>
+          <img src="/images/<%=pets[i].img%>" alt="animal image">
+        </br>
+          There are <%=pets[i].qty%> <a href="/pets/<%=pets[i].id%>"><%=pets[i].breed%></a> <%=pets[i].species%> that cost $<%=pets[i].price%>. The care rating is <%=pets[i].rating%>. <% if(pets[i].readyToGo === true) { %>
           This pet is available to come home with you today!
           <% } else { %>
             There is a waiting period before this animal can head home!
@@ -18,13 +21,18 @@
             <form action="/pets/<%=pets[i].id%>?_method=DELETE" method="POST">
               <input type="submit" value="DELETE"/>
             </form>
-            <a href="/pets/<%=pets[i].id%>/edit">Edit Your Pet Choice</a>
+            <button type="button">
+              <a href="/pets/<%=pets[i].id%>/edit">Edit Your Pet Choice</a>
+            </button>
+          </br>
+          </br>
         </li>
       <% } %>
     </ul>
-    <nav>
-    <% include ./partials/nav.ejs %>
-    </nav>
-
+    <div class=container>
+      <nav>
+        <% include ./partials/nav.ejs %>
+      </nav>
+    </div>
   </body>
 </html>

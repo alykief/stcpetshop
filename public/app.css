@@ -1,9 +1,19 @@
-header {
-  background-image: url("./logo.jpg");
+.logo{
+  width: 70%;
+  height: auto;
   background-color: white;
-  align-content: center;
+  border: 10px solid white;
+  margin: 10px;
+  padding: 10px;
+}
+
+img:not(.logo){
   width: 200px;
   height: auto;
+  align-content: center;
+  border: 10px solid white;
+  margin: 10px;
+  padding: 10px;
 }
 
  body {
@@ -31,13 +41,31 @@ body {
 
 ul {
   font-size: 16px;
+  list-style-type: none;
 }
 
-nav {
+li {
+  border: 2px solid white;
+  width: 72%;
+  height: auto;
+}
+
+.vertNav {
   font-size: 16px;
+  margin: 0;
+  padding: 0;
+  list-style-type: none;
+  display: block;
+  width: 25%;
+  min-height: 100%;
+  background-color: #536E93;
   float: right;
-  display: inline-block;
-  width: 25px;
+}
+
+.vertNavLink {
+  border: none;
+  margin: 2px;
+  padding: 2px;
 }
 
 a:hover {

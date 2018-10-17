@@ -5,6 +5,7 @@
   </head>
   <body>
     <header>
+      <img class="logo" src="/images/logo.jpg" alt="logo"/>
     </header>
     <h1>Edit Your Pet Choice</h1>
     <form action="/pets/<%pets.id%>?_method=PUT" method="POST">
@@ -12,8 +13,7 @@
       Breed: <input type="text" name="breed" /></br>
       Photo: <input type="text" name="img" /></br>
       Ready To Go Home?: <type="checkbox" name="readyToGo"
-        <% if(pets.readyToGo === true)
-          { %>
+        <% if(pets.readyToGo === true){ %>
             Checked
             <% } %>
       /></br>
@@ -26,8 +26,10 @@
       <input type="radio" name="rating" value="5">5</br>
       <input type="submit" name="" value="Submit Changes" />
     </form>
-    <nav>
-      <% include ./partials/head.ejs %>
-    </nav>
+    <div class=container>
+      <nav>
+        <% include ./partials/nav.ejs %>
+      </nav>
+    </div>
   </body>
 </html>
