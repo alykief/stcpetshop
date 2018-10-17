@@ -45,27 +45,32 @@ ul {
 }
 
 li {
-  border: 2px solid white;
-  width: 72%;
-  height: auto;
+  border: 10px solid white;
+  margin: 10px;
+  padding: 35px;
+  /* width: 72%;
+  height: auto; */
 }
 
 .vertNav {
   font-size: 16px;
-  margin: 0;
-  padding: 0;
+  margin-top: 11px;
+  padding: 15px;
   list-style-type: none;
-  display: block;
-  width: 25%;
-  min-height: 100%;
+  width: 150px;
+  height: 100%;
   background-color: #536E93;
-  float: right;
+  border: 10px solid white;
 }
 
 .vertNavLink {
   border: none;
   margin: 2px;
-  padding: 2px;
+}
+
+.container {
+  display: flex;
+  justify-content: space-around;
 }
 
 a:hover {

@@ -8,7 +8,7 @@ const db = mongoose.connection;
 //Allow use of Heroku's port or local Port
 const PORT = process.env.PORT || 3000
 //Database
-const MONGODB_URI = 'mongodb://localhost:27017/' + 'stcpetshop' || 'mongodb://heroku_k16n9j0c:v6bvuv1snvg7btdr8o21dhq7tg@ds129393.mlab.com:29393/heroku_k16n9j0c' || process.env.MONGODB_URI;
+const MONGODB_URI = process.env.MONGODB_URI || 'mongodb://localhost:27017/' + 'stcpetshop';
 //Require petSchema
 const Pet = require('./models/pets.js');
 
