@@ -7,6 +7,8 @@
     <header>
       <img class="logo" src="/images/logo.jpg" alt="logo"/>
     </header>
+    <div class="container">
+      <div class="items">
     <h1>Your Future Pet</h1>
     <h2><%=pets.species%></h2>
       </br>
@@ -18,10 +20,16 @@
       <% } else { %>
         These <%=pets.species%> have a waiting period before they are ready to go home!
         <% } %>
-    <div class=container>
+      </br>
+      Reviews:
+      </br>
+      <%=pets.review%>
+    </div>
+    <div class="navBar">
       <nav>
         <% include ./partials/nav.ejs %>
       </nav>
     </div>
+  </div>
   </body>
 </html>

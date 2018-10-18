@@ -79,12 +79,12 @@ a:hover {
 }
 
 a:active {
-   color: #536E93;
+   color: white;
    text-decoration: underline;
 }
 
 a:link {
-  color: #536E93;
+  color: white;
   text-decoration: underline;
 }
 

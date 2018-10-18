@@ -8,7 +8,8 @@ const petSchema = mongoose.Schema({
   readyToGo: Boolean,
   price: { type: Number, default: 0 },
   qty: { type: Number, default: 0 },
-  rating: Number
+  rating: Number,
+  review: [String]
 });
 //Name variable
 const Pet = mongoose.model('Pet', petSchema);

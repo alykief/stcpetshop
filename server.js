@@ -61,7 +61,8 @@ app.get('/pets/seed', (req, res) => {
       readyToGo: true,
       price: 1200,
       qty: 5,
-      rating: 4
+      rating: 4,
+      review: ['Barks a lot but loyal and loving.', 'Easy to travel with and very adoring of owner!', 'Too tiny to play with normal sized dogs without worrying', 'Extremely intelligent']
     }, {
       species: 'Amphibians',
       breed: 'Blue Poison Dart Frog',
@@ -69,7 +70,8 @@ app.get('/pets/seed', (req, res) => {
       readyToGo: true,
       price: 55,
       qty: 8,
-      rating: 3
+      rating: 3,
+      review: ['Difficult to maintain cleanliness in tank but very intriguing creatures']
     }, {
       species: 'Dogs',
       breed: 'Golden Retriever',
@@ -77,7 +79,8 @@ app.get('/pets/seed', (req, res) => {
       readyToGo: false,
       price: 2500,
       qty: 4,
-      rating: 4
+      rating: 4,
+      review: ['Loyal and loving!', 'Great dog to have around children and other animals. Incredibly social and loyal.', 'Perfect hunting dog!']
     }, {
       species: 'Reptiles',
       breed: 'Bearded Dragon',
@@ -85,7 +88,8 @@ app.get('/pets/seed', (req, res) => {
       readyToGo: true,
       price: 80,
       qty: 2,
-      rating: 2
+      rating: 2,
+      review: ['Easy to care for, great beginniner pet', 'Fun to create a new habitat without worrying about animal health and well-being.']
     }, {
       species: 'Cats',
       breed: 'Maine Coon',
@@ -93,7 +97,8 @@ app.get('/pets/seed', (req, res) => {
       readyToGo: true,
       price: 1500,
       qty: 5,
-      rating: 4
+      rating: 4,
+      review: ['The best breed of cats! Adorable as heck, duh!']
     },
     {
       species: 'Reptiles',
@@ -102,7 +107,8 @@ app.get('/pets/seed', (req, res) => {
       readyToGo: false,
       price: 200,
       qty: 2,
-      rating: 5
+      rating: 5,
+      review: ['Difficult to take care of but worth the hassle thanks to their interesting antics and gorgeous colors.']
     },
     {
       species: 'Dogs',
@@ -111,7 +117,8 @@ app.get('/pets/seed', (req, res) => {
       readyToGo: true,
       price: 3500,
       qty: 12,
-      rating: 4
+      rating: 4,
+      review: ['Docile, sweet, nothing but a gentle giant', 'Hard to train due to stubborness anbd quite drooly, but extremely adoring and loyal. Great with kids']
     }
   ], (err, data)=>{
     res.redirect('/pets');
